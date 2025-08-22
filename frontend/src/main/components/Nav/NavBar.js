@@ -2,14 +2,18 @@ import React from "react"; // React
 import { Link } from "react-router-dom";
 
 // CSS
-import "./css/NavBar.css"
+import "./css/NavBar.css";
 
 // Nav
 const NavBar = () => {
-  const Nav =
+  const Nav = (
     <nav className="navbar">
       <Link to="/" className="navbar-logo">
-        <img src="./img/webPageLogo.png" alt="Logo" className="navbar-logo-image" />{" "}
+        <img
+          src="./img/webPageLogo.png"
+          alt="Logo"
+          className="navbar-logo-image"
+        />{" "}
       </Link>
       <h1 className="navbar-title">CREEPING</h1>
       <ul className="navbar-links">
@@ -28,14 +32,18 @@ const NavBar = () => {
             ECOM SEARCH
           </Link>
         </li>
+        <li>
+          <Link to="/jobs" className="navbar-link">
+            JOBS
+          </Link>
+        </li>
       </ul>
-    </nav>;
+    </nav>
+  );
 
   // Return
-  return (
-    Nav
-  );
-}
+  return Nav;
+};
 
 // Export
 export default NavBar;

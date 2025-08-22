@@ -1,0 +1,115 @@
+.jobcard-body {
+    /* Display */
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+
+    /* Margin & Padding */
+    margin: 0;
+
+    /* BG */
+    background: #fff;
+
+    /* Border */
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    /* Cursor */
+    cursor: pointer;
+
+    /* Transition */
+    transition: all 0.2s ease-in-out;
+}
+
+.jobcard-body:hover {
+    /* BG */
+    background: rgba(0, 0, 0, 1);
+    /* backdrop-filter: blur(50px); */
+
+    /* Border */
+    border: 1px solid black;
+    box-shadow: 0 0 4px 1px rgba(255, 255, 255, 1);
+
+    /* Text */
+    color: #fff;
+
+    /* Overflow */
+    overflow: hidden;
+}
+
+
+/* Link */
+.jobcard-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* Job Logo */
+.jobcard-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+
+    /* Border */
+    border: 1px solid white;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 2px 1px rgba(255, 255, 255, 1);
+}
+
+
+/* Job Text */
+.jobcard-text {
+    /* Display */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.jobcard-h3 {
+    /* Margin & Padding */
+    margin: 0;
+
+    /* Text */
+    font-size: 1.125rem;
+    font-weight: bold;
+}
+
+/* Details */
+.jobcard-details {
+    /* Display */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    /* Margin & Padding */
+    margin: 0px 0px 0px 20px;
+}
+
+.jobcard-company {
+    /* Margin & Padding */
+    margin: 0.25rem 0;
+
+    /* Text */
+    font-size: 0.9rem;
+}
+
+.jobcard-location {
+    /* Margin & Padding */
+    margin: 0;
+
+    /* Text */
+    font-size: 0.8rem;
+}
+
+.jobcard-date {
+    /* Margin & Padding */
+    margin: 0;
+
+    /* Text */
+    font-size: 0.8rem;
+}

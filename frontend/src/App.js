@@ -1,4 +1,4 @@
-import react from "react"; // React
+import React from "react"; // React
 import { useLocation } from "react-router-dom";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
@@ -8,11 +8,19 @@ import Header from "./main/components/Header/Header"; // Header
 import Footer from "./main/components/Footer/Footer"; // Footer
 import Error from "./main/components/Error/Error"; // Error
 
+
 // Pages
 import Home from "./main/pages/Home";
 import About from "./main/pages/About";
+
+
+// Search
 import Search from "./main/pages/Search/Search";
 import EcomSearch from "./main/pages/Search/EcomSearch";
+
+
+// Jobs
+import JobList from "./main/pages/Job/JobList";
 
 // RouteLayout
 const RouteLayout = () => {
@@ -25,7 +33,8 @@ const RouteLayout = () => {
     "/home": "HOME",
     "/about": "ABOUT",
     "/search": "SEARCH",
-    "/ecomSearch": "ECOM SEARCH"
+    "/ecomSearch": "ECOM SEARCH",
+    "/jobs": "JOB LIST",
   };
 
   const headerText = headerTitles[location.pathname] || "DEFAULT";
@@ -43,6 +52,7 @@ const RouteLayout = () => {
         <Route path="/about" element={<About />} />
         <Route path="/search" element={<Search />} />
         <Route path="/ecomSearch" element={<EcomSearch />} />
+        <Route path="/jobs" element={<JobList />} />
       </Routes>
 
       {/* Footer */}
