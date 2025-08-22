@@ -24,8 +24,8 @@ const NavBar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/search" className="navbar-link">
-            SEARCH
+          <Link to="/ecomSearch" className="navbar-link">
+            ECOM SEARCH
           </Link>
         </li>
       </ul>

@@ -1,7 +1,5 @@
 import React, { useState } from "react"; // React
 
-// Components
-
 // CSS
 import './css/Search.css'
 
