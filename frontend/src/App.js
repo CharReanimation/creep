@@ -1,25 +1,69 @@
-import logo from './logo.svg';
-import './App.css';
+import react from "react"; // React
+import { useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
-function App() {
+// Components
+import NavBar from "./main/components/Nav/NavBar"; // NavBar
+import Header from "./main/components/Header/Header"; // Header
+import Footer from "./main/components/Footer/Footer"; // Footer
+import Error from "./main/components/Error/Error"; // Error
+
+// Pages
+import Home from "./main/pages/Home";
+import About from "./main/pages/About";
+import Search from "./main/pages/Search";
+
+// RouteLayout
+const RouteLayout = () => {
+  // Location
+  const location = useLocation();
+
+  // Map pathnames to header text
+  const headerTitles = {
+    "/": "ERROR",
+    "/home": "HOME",
+    "/about": "ABOUT",
+    "/search": "SEARCH"
+  };
+
+  const headerText = headerTitles[location.pathname] || "DEFAULT";
+
+  // Return
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {/* Header */}
+      <Header HeaderText={headerText} />
+
+      {/* Routes */}
+      <Routes>
+        <Route path="*" element={<Error />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/search" element={<Search />} />
+      </Routes>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
 
+const App = () => {
+  // Return
+  return (
+    <BrowserRouter>
+      <div className="App">
+        {/* Nav */}
+        <NavBar />
+
+        {/* Routes */}
+        <RouteLayout />
+      </div>
+    </BrowserRouter>
+
+
+  );
+}
+
+// Export
 export default App;
