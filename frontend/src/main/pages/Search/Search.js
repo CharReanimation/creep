@@ -1,7 +1,7 @@
 import React, { useState } from "react"; // React
 
 // CSS
-import './css/Search.css'
+import '../../global/css/global.css'
 
 // Search
 const Search = ({ onSearch }) => {

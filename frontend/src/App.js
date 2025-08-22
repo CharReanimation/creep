@@ -13,14 +13,15 @@ import Error from "./main/components/Error/Error"; // Error
 import Home from "./main/pages/Home";
 import About from "./main/pages/About";
 
-
 // Search
 import Search from "./main/pages/Search/Search";
 import EcomSearch from "./main/pages/Search/EcomSearch";
 
-
 // Jobs
 import JobList from "./main/pages/Job/JobList";
+
+// CSS
+import "./main/global/css/global_anim.css"
 
 // RouteLayout
 const RouteLayout = () => {
@@ -43,7 +44,9 @@ const RouteLayout = () => {
   return (
     <div>
       {/* Header */}
-      <Header HeaderText={headerText} />
+      <div className="App-Header">
+        <Header HeaderText={headerText} />
+      </div>
 
       {/* Routes */}
       <Routes>
