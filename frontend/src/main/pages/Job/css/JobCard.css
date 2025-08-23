@@ -90,9 +90,17 @@
     margin: 0px 0px 0px 20px;
 }
 
-.jobcard-company {
+.jobcard-type {
     /* Margin & Padding */
     margin: 0.25rem 0;
+
+    /* Text */
+    font-size: 0.9rem;
+}
+
+.jobcard-company {
+    /* Margin & Padding */
+    margin: 0;
 
     /* Text */
     font-size: 0.9rem;

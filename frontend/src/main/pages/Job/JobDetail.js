@@ -14,6 +14,7 @@ const JobDetail = ({ job }) => {
     <div className="jobdetail-body">
       <img className="jobdetail-logo" src={job.logo} alt={job.company} />
       <h2>{job.title}</h2>
+      <p><strong>Job Type: </strong>{job.type}</p>
       <p><strong>Company: </strong>{job.company}</p>
       <p><strong>Location: </strong>{job.location}</p>
       <p><strong>Release Date: </strong>{job.date}</p>

@@ -1,6 +1,6 @@
 import React from "react"; // React
 import { useLocation } from "react-router-dom";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, Navigate } from "react-router-dom";
 
 // Components
 import NavBar from "./main/components/Nav/NavBar"; // NavBar
@@ -45,12 +45,13 @@ const RouteLayout = () => {
     <div>
       {/* Header */}
       <div className="App-Header">
-        <Header HeaderText={headerText} />
+        {headerText !== "ERROR" && <Header HeaderText={headerText} />}
       </div>
 
       {/* Routes */}
       <Routes>
         <Route path="*" element={<Error />} />
+        <Route path="/" element={<Navigate to="/home" replace />} />
         <Route path="/home" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/search" element={<Search />} />

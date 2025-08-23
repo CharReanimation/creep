@@ -6,8 +6,11 @@ import JobDetail from "./JobDetail";
 import JobFilter from "./JobFilter";
 
 // CSS
-import "../../global/css/global_anim.css"
+import "../../global/css/global_anim.css";
 import "./css/JobList.css";
+
+// Job Types
+const JOB_TYPES = ["Full-Time", "Part-Time", "Contract", "Intern"];
 
 // Fake Data
 const jobsData = Array.from({ length: 53 }, (_, i) => ({
@@ -18,21 +21,35 @@ const jobsData = Array.from({ length: 53 }, (_, i) => ({
   location: `Location ${i + 1}`,
   date: `Date ${i + 1}`,
   desc: `Description ${i + 1}`,
+  type: JOB_TYPES[i % JOB_TYPES.length],
 }));
 
+// Job List
 const JobList = () => {
   // State
   const [page, setPage] = useState(1);
   const pageSize = 10;
   const [selectedJob, setSelectedJob] = useState(null); // Job Details
-  const [filter, setFilter] = useState(""); // Fliter
+  const [filter, setFilter] = useState({
+    query: "",
+    jobTypes: [],
+  }); // Fliter
 
   // Filtered Job
-  const filteredJobs = jobsData.filter((job) =>
-    `${job.title} ${job.company} ${job.location}`
-      .toLowerCase()
-      .includes(filter.toLowerCase())
-  );
+  const filteredJobs = jobsData.filter((job) => {
+    // Search
+    const matchesQuery = filter.query
+      ? `${job.title} ${job.company} ${job.location}`
+          .toLowerCase()
+          .includes(filter.query.toLowerCase())
+      : true;
+
+    // Job Type
+    const matchesType =
+      filter.jobTypes.length > 0 ? filter.jobTypes.includes(job.type) : true;
+
+    return matchesQuery && matchesType;
+  });
 
   // Current Page
   const start = (page - 1) * pageSize;

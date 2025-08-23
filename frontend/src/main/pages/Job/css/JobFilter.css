@@ -1,0 +1,70 @@
+.jobfilter-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.jobfilter-dropdown-toggle {
+    /* Margin & Padding */
+    padding: 6px 12px;
+
+    /*BG*/
+    background: #f8f8f8;
+
+    /* Border */
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+    /* Cursor */
+    cursor: pointer;
+}
+
+.jobfilter-dropdown-menu {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    z-index: 1000;
+
+    /* Display */
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+
+    /* Margin & Padding */
+    padding: 6px;
+
+    /*BG*/
+    background: white;
+
+    /* Border */
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.jobfilter-dropdown-item {
+    /* Margin & Padding */
+    padding: 6px 10px;
+    text-align: left;
+
+    /*BG*/
+    background: none;
+
+    /* Border */
+    border: none;
+
+    /* Cursor */
+    cursor: pointer;
+}
+
+.jobfilter-dropdown-item:hover {
+    /* BG */
+    background: #f0f0f0;
+}
+
+.jobfilter-dropdown-item.selected {
+    /* BG */
+    background: #007bff;
+
+    /* Text */
+    color: white;
+}
