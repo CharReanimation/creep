@@ -1,11 +1,18 @@
-import React from "react"; // React
+import React, { useContext } from "react"; // React
 import { Link } from "react-router-dom";
+
+// Components
+import { AuthContext } from "../context/AuthContext";
 
 // CSS
 import "./css/NavBar.css";
 
 // Nav
 const NavBar = () => {
+  // Auth
+  const { isAuthenticated, logout } = useContext(AuthContext);
+
+  // Nav
   const Nav = (
     <nav className="navbar">
       <Link to="/" className="navbar-logo">
@@ -28,25 +35,34 @@ const NavBar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/ecomSearch" className="navbar-link">
-            ECOM SEARCH
-          </Link>
-        </li>
-        <li>
           <Link to="/jobs" className="navbar-link">
             JOBS
           </Link>
         </li>
-        <li>
-          <Link to="/register" className="navbar-link">
-            REGISTER
-          </Link>
-        </li>
-        <li>
-          <Link to="/login" className="navbar-link">
-            LOGIN
-          </Link>
-        </li>
+        {isAuthenticated ? (
+          <>
+          {/* Authenticated */}
+            <li>
+              <button className="navbar-link logout-btn" onClick={logout}>
+                LOGOUT
+              </button>
+            </li>
+          </>
+        ) : (
+          <>
+          {/* Not Authenticated */}
+            <li>
+              <Link to="/login" className="navbar-link">
+                LOGIN
+              </Link>
+            </li>
+            <li>
+              <Link to="/register" className="navbar-link">
+                REGISTER
+              </Link>
+            </li>
+          </>
+        )}
       </ul>
     </nav>
   );

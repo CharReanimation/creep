@@ -7,7 +7,8 @@ import NavBar from "./main/components/Nav/NavBar"; // NavBar
 import Header from "./main/components/Header/Header"; // Header
 import Footer from "./main/components/Footer/Footer"; // Footer
 import Error from "./main/components/Error/Error"; // Error
-
+import { AuthProvider } from "./main/components/context/AuthContext";
+import RouteGuard from "./RouteGuard";
 
 // Pages
 import Home from "./main/pages/Home/Home";
@@ -27,7 +28,7 @@ import EcomSearch from "./main/pages/Search/EcomSearch";
 import JobList from "./main/pages/Job/JobList";
 
 // CSS
-import "./main/global/css/global_anim.css"
+import "./main/global/css/global_anim.css";
 
 // RouteLayout
 const RouteLayout = () => {
@@ -64,33 +65,54 @@ const RouteLayout = () => {
         <Route path="/about" element={<About />} />
         <Route path="/search" element={<Search />} />
         <Route path="/ecomSearch" element={<EcomSearch />} />
-        <Route path="/jobs" element={<JobList />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route
+          path="/jobs"
+          element={
+            <RouteGuard requireAuth={true}>
+              <JobList />
+            </RouteGuard>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RouteGuard requireAuth={false}>
+              <Login />
+            </RouteGuard>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <RouteGuard requireAuth={false}>
+              <Register />
+            </RouteGuard>
+          }
+        />
       </Routes>
 
       {/* Footer */}
       <Footer />
     </div>
   );
-}
+};
 
 const App = () => {
   // Return
   return (
-    <BrowserRouter>
-      <div className="App">
-        {/* Nav */}
-        <NavBar />
+    <AuthProvider>
+      <BrowserRouter>
+        <div className="App">
+          {/* Nav */}
+          <NavBar />
 
-        {/* Routes */}
-        <RouteLayout />
-      </div>
-    </BrowserRouter>
-
-
+          {/* Routes */}
+          <RouteLayout />
+        </div>
+      </BrowserRouter>
+    </AuthProvider>
   );
-}
+};
 
 // Export
 export default App;

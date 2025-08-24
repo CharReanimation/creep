@@ -1,5 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+
+// API
 import { User_Login } from "../../../API/API_USER";
+
+// Components
+import { AuthContext } from "../../../main/components/context/AuthContext";
 
 // CSS
 import "../../global/css/global_anim.css"
@@ -8,8 +13,10 @@ import "./css/Login.css";
 // Login
 const Login = () => {
   // State
+  const { login } = useContext(AuthContext);
   const [form, setForm] = useState({ email: "", password: "" });
 
+  // Handle Change
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -20,7 +27,7 @@ const Login = () => {
     try {
       const data = await User_Login(form);
       alert(data.message);
-      localStorage.setItem("token", data.token);
+      login(data.token);
     } catch (err) {
       alert(err.message);
     }
@@ -31,6 +38,7 @@ const Login = () => {
     <div className="login-body anim-fade-in">
       <div className="login-body-container">
         <form className="login-body-form" onSubmit={handleSubmit}>
+          {/* Email */}
           <input
             className="login-input"
             name="email"
@@ -38,6 +46,7 @@ const Login = () => {
             placeholder="邮箱"
             onChange={handleChange}
           />
+          {/* Password */}
           <input
             className="login-input"
             name="password"

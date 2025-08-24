@@ -76,6 +76,7 @@ const Register = () => {
     <div className="register-body anim-fade-in">
       <div className="register-body-container">
         <form className="register-body-form" onSubmit={handleSubmit}>
+          {/* Username */}
           <input
             className="register-input"
             name="username"
@@ -83,6 +84,7 @@ const Register = () => {
             placeholder="用户名"
             onChange={handleChange}
           />
+          {/* Email */}
           <input
             className="register-input"
             name="email"
@@ -90,6 +92,7 @@ const Register = () => {
             placeholder="邮箱"
             onChange={handleChange}
           />
+          {/* Password */}
           <input
             className="register-input"
             name="password"
@@ -97,6 +100,7 @@ const Register = () => {
             placeholder="密码: 至少6位，包含1个大写字母和1个特殊字符"
             onChange={handleChange}
           />
+          {/* Password Repetition */}
           <input
             className="register-input"
             type="password"
