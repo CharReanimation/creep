@@ -1,0 +1,14 @@
+Authentication Test
+User DB Connection
+User DB Data Insertion
+
+User Functionality
+- Change Username
+- Change Password
+- Delete Account: I don't like it, I wish to delete my account
+- Suspend Acount: If you suspend your account, you can't login until you contact admin to unsuspend it
+- Profile Settings: Avatar, Bio, etc.
+
+Admin Functionality
+- Add / Delete User
+- Suspend / Unsuspend User
