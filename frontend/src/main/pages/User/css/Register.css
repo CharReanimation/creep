@@ -1,0 +1,104 @@
+.register-body-container {
+    /* Display */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Margin & Padding */
+    margin: 60px 0px 60px 0px;
+
+    /* BG */
+    background-color: #f5f5f5;
+}
+
+.register-body-form {
+    /* Size */
+    width: 400px;
+
+    /* Display */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    /* Margin & Padding */
+    margin: 0px 0px 0px 0px;
+    padding: 50px 0px 40px 0px;
+
+    /* BG */
+    background-color: #fff;
+
+    /* Border */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.register-input {
+    /* Size */
+    width: 300px;
+    height: 40px;
+
+    /* Display */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Margin & Padding */
+    margin: 0px 0px 0px 0px;
+    padding: 5px;
+
+    /* BG */
+    background-color: #f5f5f5;
+
+    /* Border */
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 1);
+
+    /* Box */
+    box-sizing: border-box;
+}
+
+.register-button {
+    /* Size */
+    width: 300px;
+    height: 40px;
+
+    /* Display */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Margin & Padding */
+    margin: 0px 0px 10px 0px;
+
+    /* Border */
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 1);
+
+    /* Box */
+    box-sizing: border-box;
+
+    /* BG */
+    background-color: black;
+
+    /* Text */
+    font-weight: bolder;
+    color: #fff;
+
+    /* Cusor */
+    cursor: pointer;
+
+    /* Transition */
+    transition: 0.2s ease-in-out;
+}
+
+.register-button:hover {
+    /* BG */
+    background-color: cyan;
+
+    /* Text */
+    color: black;
+}

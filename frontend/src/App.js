@@ -10,8 +10,14 @@ import Error from "./main/components/Error/Error"; // Error
 
 
 // Pages
-import Home from "./main/pages/Home";
-import About from "./main/pages/About";
+import Home from "./main/pages/Home/Home";
+import About from "./main/pages/About/About";
+
+// User
+import Login from "./main/pages/User/Login"; // Login
+import Register from "./main/pages/User/Register"; // Register
+
+// Admin
 
 // Search
 import Search from "./main/pages/Search/Search";
@@ -36,6 +42,8 @@ const RouteLayout = () => {
     "/search": "SEARCH",
     "/ecomSearch": "ECOM SEARCH",
     "/jobs": "JOB LIST",
+    "/login": "LOGIN",
+    "/register": "REGISTER",
   };
 
   const headerText = headerTitles[location.pathname] || "DEFAULT";
@@ -57,6 +65,8 @@ const RouteLayout = () => {
         <Route path="/search" element={<Search />} />
         <Route path="/ecomSearch" element={<EcomSearch />} />
         <Route path="/jobs" element={<JobList />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
 
       {/* Footer */}
