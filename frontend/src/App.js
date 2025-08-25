@@ -9,6 +9,7 @@ import Footer from "./main/components/Footer/Footer"; // Footer
 import Error from "./main/components/Error/Error"; // Error
 import { AuthProvider } from "./main/components/context/AuthContext";
 import RouteGuard from "./RouteGuard";
+import HealthStatus from "./connection/HealthStatus";
 
 // Pages
 import Home from "./main/pages/Home/Home";
@@ -90,6 +91,9 @@ const RouteLayout = () => {
           }
         />
       </Routes>
+
+      {/* Server Connection */}
+      <HealthStatus />
 
       {/* Footer */}
       <Footer />

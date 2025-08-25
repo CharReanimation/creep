@@ -7,9 +7,9 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true }, // Hashed password
   roles: { type: [String], default: ["user"] }, // user/admin
   profile: { // Profile
-    avatar: { type: String },
-    bio: { type: String },
-    location: { type: String }
+    avatar: { type: String }, // Avatar
+    bio: { type: String }, // Bio
+    location: { type: String } // Location
   },
   createdAt: { type: Date, default: Date.now } // Created time
 });

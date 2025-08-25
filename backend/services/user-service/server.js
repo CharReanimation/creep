@@ -23,3 +23,8 @@ app.use("/api/users", userRoutes); // Something like this: /api/users/login
 
 // Start Server
 app.listen(PORT, () => console.log(`🚀 User-Service running on port ${PORT}`));
+
+// Health
+app.get("/api/health", (req, res) => {
+  res.json({ status: "ok", message: "Frontend ↔ Backend Connected ✅" });
+});

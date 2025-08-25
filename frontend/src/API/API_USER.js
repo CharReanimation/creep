@@ -1,6 +1,11 @@
 // User
-const API_URL = "http://localhost:5000/api";
-// const API_URL = "/api/users";
+const API_URL = "http://localhost:5000/api"; // Local
+// const API_URL = "/api/users"; // Docker
+
+// Check Health: Check if Frontend and Backend are connected
+export async function checkHealth() {
+  return request("/health", "GET");
+}
 
 // Register
 export async function User_Register(userData) {
