@@ -18,7 +18,7 @@ export async function User_Login(userData) {
 }
 
 // Profile
-export async function getProfile() {
+export async function Get_Profile() {
   return request("/profile", "GET");
 }
 

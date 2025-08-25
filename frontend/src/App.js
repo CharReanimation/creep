@@ -2,6 +2,9 @@ import React from "react"; // React
 import { useLocation } from "react-router-dom";
 import { BrowserRouter, Routes, Route, Link, Navigate } from "react-router-dom";
 
+// Base Route
+import { USER, ADMIN } from "./Base_Route"; // Base Route
+
 // Components
 import NavBar from "./main/components/Nav/NavBar"; // NavBar
 import Header from "./main/components/Header/Header"; // Header
@@ -18,6 +21,8 @@ import About from "./main/pages/About/About";
 // User
 import Login from "./main/pages/User/Login"; // Login
 import Register from "./main/pages/User/Register"; // Register
+import Profile from "./main/pages/User/Profile"; // Profile
+import Dashboard from "./main/pages/User/Dashboard"; // Dashboard
 
 // Admin
 
@@ -46,6 +51,7 @@ const RouteLayout = () => {
     "/jobs": "JOB LIST",
     "/login": "LOGIN",
     "/register": "REGISTER",
+    "/user/dashboard": "DASHBOARD",
   };
 
   const headerText = headerTitles[location.pathname] || "DEFAULT";
@@ -66,14 +72,8 @@ const RouteLayout = () => {
         <Route path="/about" element={<About />} />
         <Route path="/search" element={<Search />} />
         <Route path="/ecomSearch" element={<EcomSearch />} />
-        <Route
-          path="/jobs"
-          element={
-            <RouteGuard requireAuth={true}>
-              <JobList />
-            </RouteGuard>
-          }
-        />
+
+        {/* Registration */}
         <Route
           path="/login"
           element={
@@ -87,6 +87,24 @@ const RouteLayout = () => {
           element={
             <RouteGuard requireAuth={false}>
               <Register />
+            </RouteGuard>
+          }
+        />
+
+        {/* Login Required */}
+        <Route
+          path="/jobs"
+          element={
+            <RouteGuard requireAuth={true}>
+              <JobList />
+            </RouteGuard>
+          }
+        />
+        <Route
+          path={`${USER}/dashboard`}
+          element={
+            <RouteGuard requireAuth={true}>
+              <Dashboard />
             </RouteGuard>
           }
         />

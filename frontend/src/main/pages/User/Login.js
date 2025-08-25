@@ -1,18 +1,23 @@
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // API
 import { User_Login } from "../../../API/API_USER";
+
+// Base Route
+import { USER, ADMIN } from "../../../Base_Route"; // Base Route
 
 // Components
 import { AuthContext } from "../../../main/components/context/AuthContext";
 
 // CSS
-import "../../global/css/global_anim.css"
+import "../../global/css/global_anim.css";
 import "./css/Login.css";
 
 // Login
 const Login = () => {
   // State
+  const navigate = useNavigate(); // Nav
   const { login } = useContext(AuthContext);
   const [form, setForm] = useState({ email: "", password: "" });
 
@@ -27,7 +32,12 @@ const Login = () => {
     try {
       const data = await User_Login(form);
       alert(data.message);
+
+      // Save Token
       login(data.token);
+
+      // Navigate to Dashboard
+      navigate(`${USER}/dashboard`);
     } catch (err) {
       alert(err.message);
     }

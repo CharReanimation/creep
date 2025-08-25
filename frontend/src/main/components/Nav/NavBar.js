@@ -1,6 +1,9 @@
 import React, { useContext } from "react"; // React
 import { Link } from "react-router-dom";
 
+// Base Route
+import { USER, ADMIN } from "../../../Base_Route"; // Base Route
+
 // Components
 import { AuthContext } from "../context/AuthContext";
 
@@ -41,7 +44,15 @@ const NavBar = () => {
         </li>
         {isAuthenticated ? (
           <>
-          {/* Authenticated */}
+            {/* Authenticated */}
+
+            <li>
+              <Link to={`${USER}/dashboard`} className="navbar-link">
+                DASHBOARD
+              </Link>
+            </li>
+
+            {/* Logout */}
             <li>
               <button className="navbar-link logout-btn" onClick={logout}>
                 LOGOUT
@@ -50,7 +61,7 @@ const NavBar = () => {
           </>
         ) : (
           <>
-          {/* Not Authenticated */}
+            {/* Not Authenticated */}
             <li>
               <Link to="/login" className="navbar-link">
                 LOGIN

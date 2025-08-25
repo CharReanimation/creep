@@ -70,6 +70,29 @@
     margin: 0px 0px 0px 0px;
     padding: 5px 10px 5px 10px;
 
+    /* BG */
+    background-color: whitesmoke;
+
+    /* Text */
+    color: black;
+
     /* Border */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+
+    /* Cursor */
+    cursor: pointer;
+
+    /* Transition */
+    transition: 0.3 ease-in-out;
+}
+
+.logout-btn:hover {
+    /* BG */
+    background-color: black;
+
+    /* Text */
+    color: white;
+
+    /* Border */
+    box-shadow: 0 0 20px 5px rgba(255, 255, 255, 1);
 }

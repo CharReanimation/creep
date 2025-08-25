@@ -13,7 +13,13 @@ router.post("/register", async (req, res) => {
   try {
     // Check if user already exists
     const exist = await User.findOne({ email });
-    if (exist) return res.status(400).json({ error: "Email has already been used!" });
+
+    // Email has already been used
+    if (exist)
+      return res.status(400).json({
+        code: 400,
+        error: "Email has already been used!",
+      });
 
     // Hashed password
     const hash = await bcrypt.hash(password, 10);
@@ -22,7 +28,11 @@ router.post("/register", async (req, res) => {
     const user = new User({ username, email, password: hash });
     await user.save();
 
-    res.json({ message: "Registration Successful!" });
+    // Success
+    res.status(200).json({
+      code: 200,
+      message: "Registration Successful!",
+    });
   } catch (err) {
     res.status(500).json({ error: "Registration Failed!" });
   }
@@ -44,7 +54,13 @@ router.post("/login", async (req, res) => {
     // JWT
     const token = jwt.sign({ id: user._id }, "SECRET_KEY", { expiresIn: "1h" });
 
-    res.json({ message: "Login Successful!", token });
+    // Success
+    res.status(200).json({ 
+      code: 200, 
+      message: "Login Successful!", 
+      token, 
+      user: { id: user._id, username: user.username, email: user.email }
+    });
   } catch (err) {
     res.status(500).json({ error: "Login Failed!" });
   }

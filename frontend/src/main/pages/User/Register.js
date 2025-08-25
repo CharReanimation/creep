@@ -1,5 +1,14 @@
-import { useState } from "react";
-import { User_Register } from "../../../API/API_USER";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+// API
+import { User_Register, User_Login } from "../../../API/API_USER";
+
+// Base Route
+import { USER, ADMIN } from "../../../Base_Route"; // Base Route
+
+// Components
+import { AuthContext } from "../../../main/components/context/AuthContext";
 
 // CSS
 import "./css/Register.css";
@@ -7,8 +16,10 @@ import "./css/Register.css";
 // Register
 const Register = () => {
   // State
+  const navigate = useNavigate(); // Nav
   const [form, setForm] = useState({ username: "", email: "", password: "" });
   const [passwordRepetition, setPasswordRepetition] = useState("");
+  const { login } = useContext(AuthContext); // Context
 
   // Email Validation
   const validateEmail = (email) => {
@@ -29,7 +40,11 @@ const Register = () => {
 
   // Handle Change
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setForm({
+      ...form,
+      [name]: name === "email" ? value.toLowerCase() : value, // Lowercase for email
+    });
   };
 
   // Handle Submit
@@ -37,7 +52,12 @@ const Register = () => {
     e.preventDefault();
 
     // Empty
-    if(!form.username || !form.email || !form.password || !passwordRepetition) {
+    if (
+      !form.username ||
+      !form.email ||
+      !form.password ||
+      !passwordRepetition
+    ) {
       alert("请填写完整信息");
       return;
     }
@@ -63,9 +83,29 @@ const Register = () => {
       return;
     }
 
+    // Register
     try {
-      const data = await User_Register(form); //
-      alert(data.message);
+      const data = await User_Register(form);
+      // Register Success
+      if (data.code === 200) {
+        // Debug: Registration Success
+        console.log("Registration Success");
+        
+        // Login
+        const loginData = await User_Login({
+          email: form.email,
+          password: form.password,
+        });
+
+        // Login Success
+        if (loginData.code === 200) {
+          // Save Token
+          login(loginData.token);
+
+          // Navigate to Dashboard
+          navigate(`${USER}/dashboard`);
+        }
+      }
     } catch (err) {
       alert(err.message);
     }
