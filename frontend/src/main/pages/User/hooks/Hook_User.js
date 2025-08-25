@@ -29,4 +29,3 @@ export const useGetProfile = () => {
   return { user, loading };
 };
 
-

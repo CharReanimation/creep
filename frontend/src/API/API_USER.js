@@ -22,6 +22,10 @@ export async function Get_Profile() {
   return request("/profile", "GET");
 }
 
+export async function Update_Profile(data) {
+  return request("/profile", "PUT", data);
+}
+
 // Request User
 async function request(path, method = "GET", body) {
   // Header

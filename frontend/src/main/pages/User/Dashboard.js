@@ -1,4 +1,5 @@
-import { useGetProfile } from "./hooks/Hook_User"; // Hooks
+// Hooks
+import { useGetProfile } from "./hooks/Hook_User";
 
 // CSS
 import "../../global/css/global_anim.css"
