@@ -1,7 +1,3 @@
-Authentication Test
-User DB Connection
-User DB Data Insertion
-
 User Functionality
 - Change Username
 - Change Password
