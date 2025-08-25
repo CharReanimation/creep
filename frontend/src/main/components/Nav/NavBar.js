@@ -45,12 +45,14 @@ const NavBar = () => {
         {isAuthenticated ? (
           <>
             {/* Authenticated */}
-
+            {/* Dashboard */}
             <li>
               <Link to={`${USER}/dashboard`} className="navbar-link">
                 DASHBOARD
               </Link>
             </li>
+
+            {/*  */}
 
             {/* Logout */}
             <li>

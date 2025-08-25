@@ -23,6 +23,7 @@ import Login from "./main/pages/User/Login"; // Login
 import Register from "./main/pages/User/Register"; // Register
 import Profile from "./main/pages/User/Profile"; // Profile
 import Dashboard from "./main/pages/User/Dashboard"; // Dashboard
+import Dashboard_Edit from "./main/pages/User/Dashboard_Edit"; // Dashboard Edit
 
 // Admin
 
@@ -52,6 +53,7 @@ const RouteLayout = () => {
     "/login": "LOGIN",
     "/register": "REGISTER",
     "/user/dashboard": "DASHBOARD",
+    "/user/dashboard/edit": "DASHBOARD EDIT",
   };
 
   const headerText = headerTitles[location.pathname] || "DEFAULT";
@@ -72,6 +74,7 @@ const RouteLayout = () => {
         <Route path="/about" element={<About />} />
         <Route path="/search" element={<Search />} />
         <Route path="/ecomSearch" element={<EcomSearch />} />
+        <Route path="/jobs" element={<JobList />} />
 
         {/* Registration */}
         <Route
@@ -92,19 +95,21 @@ const RouteLayout = () => {
         />
 
         {/* Login Required */}
-        <Route
-          path="/jobs"
-          element={
-            <RouteGuard requireAuth={true}>
-              <JobList />
-            </RouteGuard>
-          }
-        />
+
+        {/* Dashboard */}
         <Route
           path={`${USER}/dashboard`}
           element={
             <RouteGuard requireAuth={true}>
               <Dashboard />
+            </RouteGuard>
+          }
+        />
+        <Route
+          path={`${USER}/dashboard/edit`}
+          element={
+            <RouteGuard requireAuth={true}>
+              <Dashboard_Edit />
             </RouteGuard>
           }
         />

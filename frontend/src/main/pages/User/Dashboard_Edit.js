@@ -92,8 +92,8 @@ const Dashboard_Edit = () => {
         </label>
 
         {/* Submit Button */}
-        <button type="submit" disabled={saving}>
-          {saving ? "Saving" : "Save Modified Profile"}
+        <button type="submit" disabled={loading}>
+          {loading ? "Saving" : "Save Modified Profile"}
         </button>
       </form>
 

@@ -1,5 +1,9 @@
 /* Body */
 .dashboard-body {
+    /* Display */
+    display: flex;
+    flex-direction: column;
+
     /* Size */
     max-width: 800px;
 
@@ -36,7 +40,7 @@
     background: #ffffff;
 
     /* Border */
-    border-radius: 16px;
+    border-radius: 10px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 
     /* Transition */
@@ -122,4 +126,48 @@
     font-size: 18px;
     text-align: center;
 
+}
+
+/* Button */
+.dashboard-button {
+    /* Display */
+    align-self: flex-end;
+
+    /* Margin & Padding */
+    margin: 10px 0px 0px 0px;
+    padding: 5px 10px 5px 10px;
+
+    /* BG */
+    background-color: whitesmoke;
+
+    /* Text */
+    color: black;
+
+    /* Border */
+    border: none;
+    border-radius: 6px;
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 1);
+
+    /* Cursor */
+    cursor: pointer;
+
+    /* Transition */
+    transition: all 0.3s ease-in-out;
+}
+
+.dashboard-button:hover {
+    /* BG */
+    background-color: black;
+
+    /* Text */
+    color: whitesmoke;
+
+    /* Border */
+    box-shadow: none;
+
+    /* Cursor */
+    cursor: pointer;
+
+    /* Transition */
+    transition: all 0.3s ease-in-out;
 }

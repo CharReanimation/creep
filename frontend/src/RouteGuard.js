@@ -8,12 +8,12 @@ const RouteGuard = ({ children, requireAuth = true }) => {
 
   // Login Required
   if (requireAuth && !isAuthenticated) {
-    return <Navigate to="/login" replace />; // Navigate to login page
+    return <Navigate to="/login" replace />; // Navigate to Login page
   }
-  
+
   // Has Logged in
   if (!requireAuth && isAuthenticated) {
-    return <Navigate to="/home" replace />; // Navigate to home page
+    return <Navigate to="/user/dashboard" replace />; // Navigate to Dashboard page
   }
 
   // Return

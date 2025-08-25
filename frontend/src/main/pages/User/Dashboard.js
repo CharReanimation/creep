@@ -1,12 +1,17 @@
+import { useNavigate } from "react-router-dom";
+
 // Hooks
 import { useGetProfile } from "./hooks/Hook_User";
 
 // CSS
-import "../../global/css/global_anim.css"
+import "../../global/css/global_anim.css";
 import "./css/Dashboard.css";
 
 // Dashboard
 const Dashboard = () => {
+  // Nav
+  const navigate = useNavigate();
+
   // State
   const { user, loading } = useGetProfile();
 
@@ -23,7 +28,9 @@ const Dashboard = () => {
   return (
     <div className="dashboard-body">
       <h1 className="anim-fade-in">欢迎回来，{user.username} 👋</h1>
+      {/* Dashboard Card */}
       <div className="dashboard-card anim-down-to-up">
+        {/* Dashboard Avatar */}
         <div className="dashboard-avatar">
           {user.profile?.avatar ? (
             <img src={user.profile.avatar} alt="Avatar" />
@@ -32,6 +39,7 @@ const Dashboard = () => {
           )}
         </div>
 
+        {/* Dashboard Info */}
         <div className="dashboard-info">
           <p>
             <strong>Email:</strong> {user.email}
@@ -51,6 +59,13 @@ const Dashboard = () => {
           </p>
         </div>
       </div>
+      {/* Edit Button */}
+      <button
+        className="dashboard-button anim-fade-in"
+        onClick={() => navigate("/user/dashboard/edit")}
+      >
+        Edit Profile
+      </button>
     </div>
   );
 };
