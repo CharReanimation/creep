@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Hooks
 import { useGetProfile } from "./hooks/Hook_User";
@@ -11,6 +12,9 @@ import "./css/Dashboard_Edit.css";
 
 // Dashboard Edit
 const Dashboard_Edit = () => {
+  // Nav
+  const navigate = useNavigate();
+
   // State
   const { user } = useGetProfile();
   const { updateProfile, loading, error, success } = HandleUpdateProfile();
@@ -43,6 +47,8 @@ const Dashboard_Edit = () => {
     try {
       const updatedUser = await updateProfile(form);
       console.log("Updated User Profile: ", updatedUser);
+      // Navigate to Dashboard
+      navigate("/user/dashboard");
     } catch {
       console.log("Failed to update user profile");
     }
@@ -51,59 +57,72 @@ const Dashboard_Edit = () => {
   if (loading) return <div>Loading...</div>;
   if (!user) return <div>Failed to get User Profile</div>;
 
+  // Return
   return (
     <div className="dashboard-edit-body">
-      <h1>Edit Profile ✏️</h1>
+      <div className="dashboard-edit-body-container">
+        <form className="dashboard-edit-form" onSubmit={handleSubmit}>
+          {/* Avatar */}
+          <label>
+            Avatar URL
+            <input
+              type="text"
+              name="avatar"
+              value={form.avatar}
+              onChange={handleChange}
+              placeholder="https://example.com/avatar.png"
+            />
+          </label>
 
-      <form className="dashboard-edit-form" onSubmit={handleSubmit}>
-        {/* Avatar */}
-        <label>
-          Avatar URL
-          <input
-            type="text"
-            name="avatar"
-            value={form.avatar}
-            onChange={handleChange}
-            placeholder="https://example.com/avatar.png"
-          />
-        </label>
+          {/* Bio */}
+          <label>
+            Bio
+            <textarea
+              name="bio"
+              value={form.bio}
+              onChange={handleChange}
+              placeholder="写一点自我介绍..."
+            />
+          </label>
 
-        {/* Bio */}
-        <label>
-          Bio
-          <textarea
-            name="bio"
-            value={form.bio}
-            onChange={handleChange}
-            placeholder="写一点自我介绍..."
-          />
-        </label>
+          {/* Location */}
+          <label>
+            Location
+            <input
+              type="text"
+              name="location"
+              value={form.location}
+              onChange={handleChange}
+              placeholder="城市/地区"
+            />
+          </label>
 
-        {/* Location */}
-        <label>
-          Location
-          <input
-            type="text"
-            name="location"
-            value={form.location}
-            onChange={handleChange}
-            placeholder="城市/地区"
-          />
-        </label>
-
-        {/* Submit Button */}
-        <button type="submit" disabled={loading}>
-          {loading ? "Saving" : "Save Modified Profile"}
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="dashboard-edit-form-button anim-fade-in"
+            disabled={loading}
+          >
+            {loading ? "Saving" : "Save Modified Profile"}
+          </button>
+        </form>
+        {/* Cancel Button */}
+        <button
+          disabled={loading}
+          className="dashboard-edit-cancel-button anim-fade-in"
+          onClick={() => navigate("/user/dashboard")}
+        >
+          CANCEL
         </button>
-      </form>
+      </div>
 
       {/* Message Return */}
-      {success && (
-        <p className="dashboard-edit-message success">✅ Profile Updated!</p>
-      )}
-      {error && (
-        <p className="dashboard-edit-message error">❌ Update Failed</p>
-      )}
+      {success &&
+        // Debug
+        console.log("Profile Updated Successfully")}
+      {error &&
+        // Debug
+        console.log("Error Updating Profile")}
     </div>
   );
 };

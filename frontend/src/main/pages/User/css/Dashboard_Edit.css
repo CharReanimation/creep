@@ -1,0 +1,193 @@
+.dashboard-edit-body {
+    /* Display */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* Margin & Padding */
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+
+    /* Text */
+    color: #333;
+    font-family: "Inter", "Segoe UI", sans-serif;
+
+    /* BG */
+    background: linear-gradient(340deg, #a9a9a9, #e9f0f9);
+}
+
+/* Container */
+.dashboard-edit-body-container {
+    /* Size */
+    width: 50%;
+
+    /* Display */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* Margin & Padding */
+    margin: 60px 0px 60px 0px;
+    padding: 40px 0px 20px 0px;
+
+    /* BG */
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(14px);
+
+    /* Border */
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* Form */
+.dashboard-edit-form {
+    /* Size */
+    width: 100%;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    /* Margin & Padding */
+    margin: 0px 0px 0px 0px;
+    padding: 20px 20px 20px 20px;
+
+    /* BG */
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.dashboard-edit-form label {
+    display: flex;
+    flex-direction: column;
+
+    /* Text */
+    color: #333;
+    font-weight: 500;
+}
+
+.dashboard-edit-form input,
+.dashboard-edit-form textarea {
+    /* Margin & Padding */
+    margin-top: 0.5rem;
+    padding: 0.9rem 1rem;
+
+    /* BG */
+    background: rgba(255, 255, 255, 0.6);
+
+    /* Text */
+    font-size: 1rem;
+    outline: none;
+
+    /* Border */
+    border: 1px solid #d0d7e2;
+    border-radius: 10px;
+
+    /* Transition */
+    transition: all 0.25s ease;
+}
+
+.dashboard-edit-form input:focus,
+.dashboard-edit-form textarea:focus {
+    border-color: #4f7cff;
+    box-shadow: 0 0 0 3px rgba(79, 124, 255, 0.2);
+}
+
+.dashboard-edit-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Save Button */
+.dashboard-edit-form-button {
+    /* Margin & Padding */
+    padding: 0.9rem 1.2rem;
+
+    /* BG */
+    background: linear-gradient(135deg, #4f7cff, #6c63ff);
+
+    /* Text */
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+
+    /* Border */
+    border: none;
+    border-radius: 10px;
+
+    /* Cursor */
+    cursor: pointer;
+
+    /* Transition */
+    transition: all 0.25s ease;
+}
+
+.dashboard-edit-form-button:hover {
+    /* BG */
+    background: linear-gradient(135deg, #00af49, #00aeda);
+
+    /* Border */
+    box-shadow: 0 6px 18px rgba(79, 124, 255, 0.25);
+}
+
+.dashboard-edit-form-button:disabled {
+    /* BG */
+    background: #a3b0d4;
+
+    /* Border */
+    box-shadow: none;
+
+    /* Cursor */
+    cursor: not-allowed;
+}
+
+/* Cancel Buttton */
+.dashboard-edit-cancel-button {
+    position: relative;
+    overflow: hidden;
+
+    /* Display */
+    display: flex;
+    align-self: flex-end;
+
+    /* Margin & Padding */
+    margin: 20px 20px 0px 0px;
+    padding: 0.9rem 1.2rem;
+
+    /* BG */
+    background: linear-gradient(135deg, #ff4f4f, #6c63ff);
+
+    /* Text */
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+
+    /* Border */
+    border: none;
+    border-radius: 10px;
+
+    /* Cursor */
+    cursor: pointer;
+}
+
+.dashboard-edit-cancel-button::before {
+    /* Index */
+    z-index: -1;
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    /* BG */
+    background: linear-gradient(135deg, #ff4f4f, #471d00);
+    opacity: 0;
+
+    /* Transition */
+    transition: opacity 0.3s ease-in-out;
+}
+
+.dashboard-edit-cancel-button:hover::before {
+    opacity: 1;
+}

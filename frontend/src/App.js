@@ -53,7 +53,7 @@ const RouteLayout = () => {
     "/login": "LOGIN",
     "/register": "REGISTER",
     "/user/dashboard": "DASHBOARD",
-    "/user/dashboard/edit": "DASHBOARD EDIT",
+    "/user/dashboard/edit": "NONE",
   };
 
   const headerText = headerTitles[location.pathname] || "DEFAULT";
@@ -63,7 +63,7 @@ const RouteLayout = () => {
     <div>
       {/* Header */}
       <div className="App-Header">
-        {headerText !== "ERROR" && <Header HeaderText={headerText} />}
+        {(headerText !== "ERROR") && (headerText !== "NONE") && (<Header HeaderText={headerText} />)}
       </div>
 
       {/* Routes */}

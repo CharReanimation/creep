@@ -5,6 +5,18 @@ User Functionality
 - Suspend Acount: If you suspend your account, you can't login until you contact admin to unsuspend it
 - Profile Settings: Avatar, Bio, etc.
 
+
+Backend Test
+- Login
+- Register
+- Change Password
+- Change Username
+- Delete Account
+- Suspend Account
+- Unsuspend Account
+- Profile Settings
+
+
 Admin Functionality
 - Add / Delete User
 - Suspend / Unsuspend User
