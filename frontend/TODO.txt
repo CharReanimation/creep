@@ -1,9 +1,13 @@
 User Functionality
 - Change Username
-- Change Password
+- Change Password 
 - Delete Account: I don't like it, I wish to delete my account
 - Suspend Acount: If you suspend your account, you can't login until you contact admin to unsuspend it
 - Profile Settings: Avatar, Bio, etc.
+
+
+Backend Functionality
+- User Image Storage: Since we cannot directly store Base64 images in the database, we need to store into the Server Storage and store the link in the database
 
 
 Backend Test
@@ -16,7 +20,11 @@ Backend Test
 - Unsuspend Account
 - Profile Settings
 
-
 Admin Functionality
 - Add / Delete User
 - Suspend / Unsuspend User
+
+
+DB
+- User
+- Admin

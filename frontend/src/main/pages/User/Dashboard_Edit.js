@@ -23,6 +23,7 @@ const Dashboard_Edit = () => {
     bio: "",
     location: "",
   });
+  const [preview, setPreview] = useState(null); // Avatar Preview
 
   // Initialize Form
   useEffect(() => {
@@ -35,10 +36,33 @@ const Dashboard_Edit = () => {
     }
   }, [user]);
 
-  // Handle Change
-  const handleChange = (e) => {
+  // Handle Text Change
+  const handleTextChange = (e) => {
+    // name, value
     const { name, value } = e.target;
+
+    // Set Form
     setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // Handle File Change
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    // Choose File
+    if (!file.type.startsWith("image/")) {
+      alert("请选择图片文件");
+      return;
+    }
+    // Check Size
+    if (file.size > 2 * 1024 * 1024) {
+      alert("图片大小不能超过 2MB");
+      return;
+    }
+    // Preview
+    setPreview(URL.createObjectURL(file));
+
+    // Need to be completed
   };
 
   // Handle Submit
@@ -69,10 +93,33 @@ const Dashboard_Edit = () => {
               type="text"
               name="avatar"
               value={form.avatar}
-              onChange={handleChange}
+              onChange={handleTextChange}
               placeholder="https://example.com/avatar.png"
             />
           </label>
+
+          {/* Upload Image */}
+          <label htmlFor="img">Select image:</label>
+          <input
+            className="dashboard-edit-form-avatar-choose-file"
+            type="file"
+            id="img"
+            name="img"
+            accept="image/*"
+            onChange={handleFileChange} // File Change
+          />
+
+          {/* Preview */}
+          {preview && (
+            <div className="dashboard-edit-form-avatar-preview-container">
+              <img
+                className="dashboard-edit-form-avatar-preview"
+                src={preview}
+                alt="preview"
+                style={{ maxWidth: "100px" }}
+              />
+            </div>
+          )}
 
           {/* Bio */}
           <label>
@@ -80,7 +127,7 @@ const Dashboard_Edit = () => {
             <textarea
               name="bio"
               value={form.bio}
-              onChange={handleChange}
+              onChange={handleTextChange}
               placeholder="写一点自我介绍..."
             />
           </label>
@@ -92,7 +139,7 @@ const Dashboard_Edit = () => {
               type="text"
               name="location"
               value={form.location}
-              onChange={handleChange}
+              onChange={handleTextChange}
               placeholder="城市/地区"
             />
           </label>
