@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"; // React
 // API
 import { Get_Profile } from "../../../../API/API_USER";
 
-// User Get Profile
+// Use Get Profile
 export const useGetProfile = () => {
   // State
   const [user, setUser] = useState(null);

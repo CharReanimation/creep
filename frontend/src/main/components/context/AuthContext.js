@@ -1,4 +1,11 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect } from "react"; // React
+
+// Hooks
+import { useTokenCheck } from "./hooks/Hooks_Token_Check";
+
+// Handlers
+import { HandleLogin } from "./handlers/HandleLogin";
+import { HandleLogout } from "./handlers/HandleLogout";
 
 // Auth
 const AuthContext = createContext();
@@ -6,32 +13,15 @@ const AuthContext = createContext();
 // Auth Provider
 const AuthProvider = ({ children }) => {
   // State
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [user, setUser] = useState(null);
-
-  // Restore from local storage
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      setIsAuthenticated(true);
-      setUser({ token });
-    }
-  }, []);
+  const { isAuthenticated, user, setIsAuthenticated, setUser } = useTokenCheck();
 
   // Login
-  const login = (token) => {
-    localStorage.setItem("token", token);
-    setIsAuthenticated(true);
-    setUser({ token });
-  };
+  const login = (token) => HandleLogin(token, setIsAuthenticated, setUser);
 
   // Logout
-  const logout = () => {
-    localStorage.removeItem("token");
-    setIsAuthenticated(false);
-    setUser(null);
-  };
+  const logout = () => HandleLogout(setIsAuthenticated, setUser);
 
+  // Return
   return (
     <AuthContext.Provider value={{ isAuthenticated, user, login, logout }}>
       {children}

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState } from "react"; // React
 import { useNavigate } from "react-router-dom";
 
 // API
@@ -18,7 +18,7 @@ import "./css/Login.css";
 const Login = () => {
   // State
   const navigate = useNavigate(); // Nav
-  const { login } = useContext(AuthContext);
+  const { login } = useContext(AuthContext); // Auth Context
   const [form, setForm] = useState({ email: "", password: "" });
 
   // Handle Change
