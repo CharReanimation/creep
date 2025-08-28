@@ -1,5 +1,5 @@
 // User
-const API_URL = "http://localhost:5000/api/users"; // Local
+const API_URL = "http://localhost:5000/api/user-service"; // Local
 // const API_URL = "/api/users"; // Docker
 
 // Check Health: Check if Frontend and Backend are connected
@@ -9,21 +9,21 @@ export async function checkHealth() {
 
 // Register
 export async function User_Register(userData) {
-  return request("/register", "POST", userData);
+  return request("/auth/register", "POST", userData);
 }
 
 // Login
 export async function User_Login(userData) {
-  return request("/login", "POST", userData);
+  return request("/auth/login", "POST", userData);
 }
 
 // Profile
 export async function Get_Profile() {
-  return request("/profile", "GET");
+  return request("/user/profile", "GET");
 }
 
 export async function Update_Profile(data) {
-  return request("/profile", "PUT", data);
+  return request("/user/profile", "PUT", data);
 }
 
 // Request User
