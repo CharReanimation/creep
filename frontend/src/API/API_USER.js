@@ -7,6 +7,18 @@ export async function checkHealth() {
   return request("/health", "GET");
 }
 
+// ---- ---- Admin ---- ----
+// Get All Users
+export async function Get_All_Users() {
+  return request("/admin/users", "GET");
+}
+
+// Delete User
+export async function Delete_User(userId) {
+  return request(`/admin/delete/${userId}`, "DELETE");
+}
+
+// ---- ---- User ---- ----
 // Register
 export async function User_Register(userData) {
   return request("/auth/register", "POST", userData);
@@ -37,15 +49,19 @@ async function request(path, method = "GET", body) {
 
   // Request
   const res = await fetch(`${API_URL}${path}`, {
-    method,
-    headers,
+    method, // GET, POST, PUT, DELETE
+    headers, // Content-Type: application/json, Authorization: Bearer token
     body: body ? JSON.stringify(body) : undefined,
   });
 
   // Check if Success
   if (!res.ok) {
     const error = await res.json().catch(() => ({}));
-    throw new Error(error.error || "Failed to request");
+    throw {
+      status: res.status,
+      code: error.code || res.status,
+      message: error.error || "Failed to request",
+    };
   }
 
   // Return

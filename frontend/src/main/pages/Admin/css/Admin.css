@@ -1,0 +1,146 @@
+/* ---- ---- ---- ----
+   Admin Container
+   ---- ---- ---- ---- */
+.admin-container {
+    /* Size */
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+
+    /* Display */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    /* Margin & Padding */
+    margin: 0px;
+    padding: 60px 20px;
+
+    /* BG */
+    background: linear-gradient(340deg, #a9a9a9, #e9f0f9);
+
+    /* Text */
+    font-family: "Inter", "Segoe UI", sans-serif;
+    color: #333;
+}
+
+/* ---- ---- ---- ----
+   Table Wrapper
+   ---- ---- ---- ---- */
+.admin-table {
+    /* Size */
+    width: 90%;
+    max-width: 1200px;
+    border-collapse: collapse;
+
+    /* BG */
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+
+    /* Border */
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+
+    /* Text */
+    font-size: 0.95rem;
+}
+
+/* ---- ---- ---- ----
+   Table Header
+   ---- ---- ---- ---- */
+.admin-table thead {
+    background: linear-gradient(135deg, #4f7cff, #6c63ff);
+}
+
+.admin-table th {
+    /* Margin & Padding */
+    padding: 14px 20px;
+
+    /* Text */
+    color: #fff;
+    font-weight: 600;
+    text-align: left;
+    letter-spacing: 0.5px;
+}
+
+/* ---- ---- ---- ----
+   Table Body
+   ---- ---- ---- ---- */
+.admin-table td {
+    /* Margin & Padding */
+    padding: 12px 20px;
+
+    /* Text */
+    color: #333;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.admin-table tr:nth-child(even) {
+    /* BG */
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.admin-table tr:hover {
+    /* BG */
+    background: rgba(79, 124, 255, 0.08);
+
+    /* Transition */
+    transition: all 0.25s ease;
+}
+
+/* ---- ---- ---- ----
+   Delete Button
+   ---- ---- ---- ---- */
+.delete-btn {
+    /* Margin & Padding */
+    padding: 0.5rem 0.9rem;
+
+    /* BG */
+    background: linear-gradient(135deg, #ff4f4f, #d64545);
+
+    /* Text */
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+
+    /* Border */
+    border: none;
+    border-radius: 8px;
+
+    /* Cursor */
+    cursor: pointer;
+
+    /* Transition */
+    transition: all 0.25s ease;
+}
+
+.delete-btn:hover {
+    /* BG */
+    background: linear-gradient(135deg, #cc0000, #991111);
+
+    /* Border */
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.25);
+    
+    /* Transform */
+    transform: translateY(-1px);
+}
+
+.delete-btn:active {
+    /* Border */
+    box-shadow: none;
+
+    /* Transform */
+    transform: translateY(1px);
+}
+
+/* ---- ---- ---- ----
+   Error Text
+   ---- ---- ---- ---- */
+.admin-container.error {
+    /* Text */
+    color: #d64545;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-align: center;
+}

@@ -9,7 +9,9 @@ export const register = async (req, res) => {
   try {
     // Find User
     if (await User.findOne({ username })) {
-      return res.status(400).json({ code: 400, error: "Username already used!" }); // Username has exist
+      return res
+        .status(400)
+        .json({ code: 400, error: "Username already used!" }); // Username has exist
     }
 
     // Password
@@ -26,7 +28,11 @@ export const register = async (req, res) => {
     const hash = await bcrypt.hash(password, 10);
 
     // User
-    const user = new User({ username, email: email.toLowerCase(), password: hash });
+    const user = new User({
+      username,
+      email: email.toLowerCase(),
+      password: hash,
+    });
     await user.save();
 
     res.status(200).json({ code: 200, message: "Registration Successful!" });
@@ -45,16 +51,27 @@ export const login = async (req, res) => {
 
     // Password
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return res.status(400).json({ code: 400, error: "Wrong Password!" }); // Wrong Password
+    if (!valid)
+      return res.status(400).json({ code: 400, error: "Wrong Password!" }); // Wrong Password
 
-    // JWT
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+    // JWT Payload
+    const payload = {
+      id: user._id,
+      username: user.username,
+      email: user.email,
+      roles: user.roles,
+    };
+
+    // JWT Sign
+    const token = jwt.sign(payload, process.env.JWT_SECRET, {
+      expiresIn: "1h",
+    });
 
     res.status(200).json({
       code: 200,
       message: "Login Successful!",
       token,
-      user: { id: user._id, username: user.username, email: user.email },
+      user: payload,
     });
   } catch (err) {
     res.status(500).json({ error: "Login Failed!" });

@@ -7,7 +7,7 @@ import { User_Login } from "../../../API/API_USER";
 // Base Route
 import { USER, ADMIN } from "../../../Base_Route"; // Base Route
 
-// Components
+// Auth
 import { AuthContext } from "../../../main/components/context/AuthContext";
 
 // CSS

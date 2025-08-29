@@ -13,7 +13,7 @@ const AuthContext = createContext();
 // Auth Provider
 const AuthProvider = ({ children }) => {
   // State
-  const { isAuthenticated, user, setIsAuthenticated, setUser } = useTokenCheck();
+  const { isAuthenticated, user, loading, setIsAuthenticated, setUser } = useTokenCheck();
 
   // Login
   const login = (token) => HandleLogin(token, setIsAuthenticated, setUser);
@@ -23,7 +23,7 @@ const AuthProvider = ({ children }) => {
 
   // Return
   return (
-    <AuthContext.Provider value={{ isAuthenticated, user, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, user, loading, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

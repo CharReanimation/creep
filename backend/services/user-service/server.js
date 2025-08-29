@@ -7,6 +7,7 @@ import dotenv from "dotenv";
 import healthRoutes from "./routes/healthRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import adminRoutes from "./routes/adminRoutes.js";
 
 // Env
 dotenv.config();
@@ -25,7 +26,8 @@ const PORT = process.env.PORT || 5000;
 // Routes
 app.use("/api/user-service", healthRoutes); // Health: /api/user-service/health
 app.use("/api/user-service/auth", authRoutes); // Login: /api/user-service/auth/login
-app.use("/api/user-service/user", userRoutes); // User: /api/user-service/profile
+app.use("/api/user-service/user", userRoutes); // User: /api/user-service/user/profile
+app.use("/api/user-service/admin", adminRoutes); // Admin: /api/user-service/admin/users
 
 // Connect to MongoDB
 mongoose.connect((MONGO_URI)) // "mongodb://mongo:27017/userdb"

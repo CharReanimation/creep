@@ -2,19 +2,24 @@ import React from "react"; // React
 import { useLocation } from "react-router-dom";
 import { BrowserRouter, Routes, Route, Link, Navigate } from "react-router-dom";
 
+// Server Health
+import HealthStatus from "./connection/HealthStatus";
+
 // Base Route
 import { USER, ADMIN } from "./Base_Route"; // Base Route
 
-// Components
+// ---- ---- ---- ---- Auth ---- ---- ---- ----
+import { AuthProvider } from "./main/components/context/AuthContext"; // Auth Context
+import RouteGuard from "./RouteGuard"; // Route Guard
+
+// ---- ---- ---- ---- Components ---- ---- ---- ----
 import NavBar from "./main/components/Nav/NavBar"; // NavBar
 import Header from "./main/components/Header/Header"; // Header
 import Footer from "./main/components/Footer/Footer"; // Footer
 import Error from "./main/components/Error/Error"; // Error
-import { AuthProvider } from "./main/components/context/AuthContext";
-import RouteGuard from "./RouteGuard";
-import HealthStatus from "./connection/HealthStatus";
 
-// Pages
+// ---- ---- ---- ---- Pages ---- ---- ---- ----
+// Public
 import Home from "./main/pages/Home/Home";
 import About from "./main/pages/About/About";
 
@@ -26,6 +31,7 @@ import Dashboard from "./main/pages/User/Dashboard"; // Dashboard
 import Dashboard_Edit from "./main/pages/User/Dashboard_Edit"; // Dashboard Edit
 
 // Admin
+import Admin from "./main/pages/Admin/Admin"
 
 // Search
 import Search from "./main/pages/Search/Search";
@@ -44,7 +50,7 @@ const RouteLayout = () => {
 
   // Map pathnames to header text
   const headerTitles = {
-    "/": "ERROR",
+    "/403": "ERROR",
     "/home": "HOME",
     "/about": "ABOUT",
     "/search": "SEARCH",
@@ -54,6 +60,7 @@ const RouteLayout = () => {
     "/register": "REGISTER",
     "/user/dashboard": "DASHBOARD",
     "/user/dashboard/edit": "NONE",
+    "/admin": "ADMIN",
   };
 
   const headerText = headerTitles[location.pathname] || "DEFAULT";
@@ -63,12 +70,14 @@ const RouteLayout = () => {
     <div>
       {/* Header */}
       <div className="App-Header">
-        {(headerText !== "ERROR") && (headerText !== "NONE") && (<Header HeaderText={headerText} />)}
+        {headerText !== "ERROR" && headerText !== "NONE" && (
+          <Header HeaderText={headerText} />
+        )}
       </div>
 
       {/* Routes */}
       <Routes>
-        <Route path="*" element={<Error />} />
+        <Route path="/403" element={<Error />} />
         <Route path="/" element={<Navigate to="/home" replace />} />
         <Route path="/home" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -76,25 +85,27 @@ const RouteLayout = () => {
         <Route path="/ecomSearch" element={<EcomSearch />} />
         <Route path="/jobs" element={<JobList />} />
 
-        {/* Registration */}
+        {/* ---- ---- Public ---- ---- */}
+        {/* Login */}
         <Route
           path="/login"
           element={
-            <RouteGuard requireAuth={false}>
+            <RouteGuard requireAuth={false} publicOnly={true}>
               <Login />
             </RouteGuard>
           }
         />
+        {/* Register */}
         <Route
           path="/register"
           element={
-            <RouteGuard requireAuth={false}>
+            <RouteGuard requireAuth={false} publicOnly={true}>
               <Register />
             </RouteGuard>
           }
         />
 
-        {/* Login Required */}
+        {/* ---- ---- Login Required ---- ---- */}
 
         {/* Dashboard */}
         <Route
@@ -110,6 +121,16 @@ const RouteLayout = () => {
           element={
             <RouteGuard requireAuth={true}>
               <Dashboard_Edit />
+            </RouteGuard>
+          }
+        />
+
+        {/* Admin */}
+        <Route
+          path="/admin"
+          element={
+            <RouteGuard requireAuth={true} requireRole="admin">
+              <Admin />
             </RouteGuard>
           }
         />

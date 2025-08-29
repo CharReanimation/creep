@@ -13,7 +13,12 @@ import "./css/NavBar.css";
 // Nav
 const NavBar = () => {
   // Auth
-  const { isAuthenticated, logout } = useContext(AuthContext);
+  const { isAuthenticated, user, loading, logout } = useContext(AuthContext);
+
+  // Loading
+  if (loading) {
+    return <div>正在加载...</div>;
+  }
 
   // Nav
   const Nav = (
@@ -51,8 +56,15 @@ const NavBar = () => {
                 DASHBOARD
               </Link>
             </li>
-
-            {/*  */}
+            
+            {/* Admin */}
+            {isAuthenticated && user?.roles?.includes("admin") && (
+              <li>
+                <Link to={ADMIN} className="navbar-link">
+                  ADMIN
+                </Link>
+              </li>
+            )}
 
             {/* Logout */}
             <li>

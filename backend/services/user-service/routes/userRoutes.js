@@ -1,13 +1,17 @@
 import express from "express";
+
+// Middleware
+import { verifyToken } from "../middlewares/auth.js";
+
+// Controller
 import { getProfile, updateProfile } from "../controllers/userController.js";
-import { authMiddleware } from "../middlewares/authMiddleware.js";
 
 // Router
 const router = express.Router();
 
 // User routes
-router.get("/profile", authMiddleware, getProfile); // Get
-router.put("/profile", authMiddleware, updateProfile); // Put
+router.get("/profile", verifyToken, getProfile); // Get
+router.put("/profile", verifyToken, updateProfile); // Put
 
 // Export
 export default router;

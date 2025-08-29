@@ -6,13 +6,17 @@ export const useTokenCheck = () => {
   // State
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   // Hook
   useEffect(() => {
     // Check Token
     const checkToken = async () => {
       const token = localStorage.getItem("token"); // Restore from local storage
-      if (!token) return;
+      if (!token) {
+        setLoading(false); // Loading
+        return;
+      }
       if (token) {
         try {
           // Token
@@ -28,20 +32,19 @@ export const useTokenCheck = () => {
             setIsAuthenticated(false);
             setUser(null);
           }
-        }
-        // Error
-        catch (err) 
-        {
+        } catch (err) {
+          // Error
           console.error("Invalid token:", err);
           localStorage.removeItem("token");
           setIsAuthenticated(false);
           setUser(null);
         }
+        setLoading(false); // Loading
       }
     };
     checkToken();
   }, []);
 
   // Return
-  return { isAuthenticated, user, setIsAuthenticated, setUser };
+  return { isAuthenticated, user, loading, setIsAuthenticated, setUser };
 };
