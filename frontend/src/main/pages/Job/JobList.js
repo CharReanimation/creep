@@ -7,6 +7,7 @@ import JobFilter from "./JobFilter";
 
 // CSS
 import "../../global/css/global_anim.css";
+import "../../global/css/global_btn.css";
 import "./css/JobList.css";
 
 // Job Types
@@ -88,17 +89,17 @@ const JobList = () => {
       {/* Pagination */}
       <div className="joblist-page-btn-container">
         <button
-          className="joblist-page-btn"
+          className="pagination-btn"
           onClick={() => setPage((p) => Math.max(p - 1, 1))}
           disabled={page === 1}
         >
           Prev Page
         </button>
-        <span>
+        <span className="pagination-info">
           {page} / {maxPage}
         </span>
         <button
-          className="joblist-page-btn"
+          className="pagination-btn"
           onClick={() => setPage((p) => Math.min(p + 1, maxPage))}
           disabled={page === maxPage}
         >

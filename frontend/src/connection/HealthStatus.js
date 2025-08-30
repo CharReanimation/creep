@@ -1,33 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { checkHealth } from "../API/API_USER";
+// Hooks
+import { useHealthStatus } from "./hooks/Hook_Health";
 
 // CSS
-import "./css/HealthStatus.css"
+import "./css/HealthStatus.css";
 
 // Health Status
 const HealthStatus = () => {
-  const [status, setStatus] = useState("Checking...");
-
-  // Check Health
-  useEffect(() => {
-    const fetchHealth = async () => {
-      try {
-        const res = await checkHealth();
-        if (res.status === "ok") {
-          setStatus("User-Service: ✅ Connected! 🦑");
-        } else {
-          setStatus("User-Service: ⚠️ Error! 💀");
-        }
-      } catch (err) {
-        setStatus("❌ Backend Not Reachable 👻");
-      }
-    };
-
-    fetchHealth();
-  }, []);
+  // State
+  const { userStatus, calendarStatus } = useHealthStatus();
 
   // Return
-  return <div className="server-status">{status}</div>;
+  return (
+    <div className="server-status-body">
+      <div className="server-status-container">
+        <div>{userStatus}</div>
+        <div>{calendarStatus}</div>
+      </div>
+    </div>
+  );
 };
 
 // Export

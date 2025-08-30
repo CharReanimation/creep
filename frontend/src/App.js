@@ -30,8 +30,9 @@ import Profile from "./main/pages/User/Profile"; // Profile
 import Dashboard from "./main/pages/User/Dashboard"; // Dashboard
 import Dashboard_Edit from "./main/pages/User/Dashboard_Edit"; // Dashboard Edit
 
+
 // Admin
-import Admin from "./main/pages/Admin/Admin"
+import Admin from "./main/pages/Admin/Admin";
 
 // Search
 import Search from "./main/pages/Search/Search";
@@ -39,6 +40,9 @@ import EcomSearch from "./main/pages/Search/EcomSearch";
 
 // Jobs
 import JobList from "./main/pages/Job/JobList";
+
+// Calendar
+import Calendar from "./main/pages/Calendar/Calendar";
 
 // CSS
 import "./main/global/css/global_anim.css";
@@ -61,6 +65,7 @@ const RouteLayout = () => {
     "/user/dashboard": "DASHBOARD",
     "/user/dashboard/edit": "NONE",
     "/admin": "ADMIN",
+    "/calendar": "CALENDAR",
   };
 
   const headerText = headerTitles[location.pathname] || "DEFAULT";
@@ -121,6 +126,14 @@ const RouteLayout = () => {
           element={
             <RouteGuard requireAuth={true}>
               <Dashboard_Edit />
+            </RouteGuard>
+          }
+        />
+        <Route
+          path="/calendar"
+          element={
+            <RouteGuard requireAuth={true}>
+              <Calendar />
             </RouteGuard>
           }
         />

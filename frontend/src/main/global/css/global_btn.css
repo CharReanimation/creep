@@ -1,0 +1,30 @@
+/* Pagination Info */
+.pagination-info {
+    /* Margin & Padding */
+    margin: 0px 20px 0px 20px;
+    padding: 0px 0px 0px 0px;
+}
+
+
+/* Pagination Button */
+.pagination-btn {
+    /* Margin & Padding */
+    margin: 0px 0px 0px 0px;
+    padding: 5px 5px 5px 5px;
+
+    /* Border */
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 1px 2px rgba(0, 0, 0, 1);
+
+    /* Cursor */
+    cursor: pointer;
+
+    /* Transition */
+    transition: all 0.2s ease-in-out;
+}
+
+.pagination-btn:hover {
+    /* Border */
+    box-shadow: 0 0 1px 1px rgba(255, 255, 255, 1);
+}

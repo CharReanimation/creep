@@ -56,7 +56,14 @@ const NavBar = () => {
                 DASHBOARD
               </Link>
             </li>
-            
+
+            {/* Calendar */}
+            <li>
+              <Link to={`/calendar`} className="navbar-link">
+                CALENDAR
+              </Link>
+            </li>
+
             {/* Admin */}
             {isAuthenticated && user?.roles?.includes("admin") && (
               <li>

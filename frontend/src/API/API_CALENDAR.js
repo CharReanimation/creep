@@ -1,41 +1,32 @@
-// User
-const API_URL = "http://localhost:5000/api/user-service"; // Local
-// const API_URL = "/api/users"; // Docker
+// Calendar API
+const API_URL = "http://localhost:5001/api/calendar-service"; // Local
+// const API_URL = "/api/calendar"; // Docker
 
 // Check Health: Check if Frontend and Backend are connected
-export async function UserServiceCheckHealth() {
+export async function CalendarServiceCheckHealth() {
   return request("/health", "GET");
 }
 
-// ---- ---- Admin ---- ----
-// Get All Users
-export async function Get_All_Users() {
-  return request("/admin/users", "GET");
+// ---- ---- Calendar ---- ----
+// Get All Events
+export async function Get_All_Events(userId) {
+  const query = userId ? `?userId=${userId}` : "";
+  return request(`/events${query}`, "GET");
 }
 
-// Delete User
-export async function Delete_User(userId) {
-  return request(`/admin/delete/${userId}`, "DELETE");
+// Add Event
+export async function Add_Event(eventData) {
+  return request("/events", "POST", eventData);
 }
 
-// ---- ---- User ---- ----
-// Register
-export async function User_Register(userData) {
-  return request("/auth/register", "POST", userData);
+// Update Event
+export async function Update_Event(eventId, eventData) {
+  return request(`/events/${eventId}`, "PUT", eventData);
 }
 
-// Login
-export async function User_Login(userData) {
-  return request("/auth/login", "POST", userData);
-}
-
-// Profile
-export async function Get_Profile() {
-  return request("/user/profile", "GET");
-}
-
-export async function Update_Profile(data) {
-  return request("/user/profile", "PUT", data);
+// Delete Event
+export async function Delete_Event(eventId) {
+  return request(`/events/${eventId}`, "DELETE");
 }
 
 // ---- ---- ---- ---- Request ---- ---- ---- ----
